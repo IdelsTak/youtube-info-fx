@@ -10,6 +10,6 @@
   </properties>
   <name>YouTubeInfoFX App</name>
   <modules>
-    <module>youtube-info-fx-ui</module>
+    <module>youtube-info-fx-app-engine</module>
   </modules>
 </project>
