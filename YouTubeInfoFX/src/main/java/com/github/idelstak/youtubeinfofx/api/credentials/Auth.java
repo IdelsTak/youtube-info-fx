@@ -38,21 +38,20 @@ public class Auth {
   public static HttpRequestInitializer authorize(HttpTransport httpTransport) throws IOException {
     // Load client secrets.
     InputStream in = Auth.class.getResourceAsStream(CLIENT_SECRETS);
-    GenericJson clientSecrets = load(JSON_FACTORY, new InputStreamReader(in));
+    GenericJson json = load(JSON_FACTORY, new InputStreamReader(in));
     // Build flow and trigger user authorization request.
-    AuthorizationCodeFlow flow
-            = new GoogleAuthorizationCodeFlow.Builder(httpTransport, JSON_FACTORY, (GoogleClientSecrets) clientSecrets, SCOPES)
-                    .build();
-    Credential credential
-            = new AuthorizationCodeInstalledApp(flow, new LocalServerReceiver()).authorize("user");
+    AuthorizationCodeFlow flow = new GoogleAuthorizationCodeFlow.Builder(httpTransport, JSON_FACTORY, (GoogleClientSecrets) json, SCOPES).build();
+    LocalServerReceiver receiver = new LocalServerReceiver();
+    AuthorizationCodeInstalledApp installedApp = new AuthorizationCodeInstalledApp(flow, receiver);
+    Credential credential = installedApp.authorize("user");
     return credential;
   }
 
   public static YouTube getService() throws GeneralSecurityException, IOException {
     HttpTransport httpTransport = newTrustedTransport();
     HttpRequestInitializer initializer = authorize(httpTransport);
-    return new YouTube.Builder(httpTransport, JSON_FACTORY, initializer)
-            .setApplicationName(APPLICATION_NAME)
-            .build();
+    YouTube.Builder builder = new YouTube.Builder(httpTransport, JSON_FACTORY, initializer);
+
+    return builder.setApplicationName(APPLICATION_NAME).build();
   }
 }
