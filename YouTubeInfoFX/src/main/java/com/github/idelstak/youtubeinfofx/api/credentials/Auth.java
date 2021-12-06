@@ -31,8 +31,7 @@ import java.util.Collection;
 public class Auth {
 
   private static final String CLIENT_SECRETS = "client_secret_227524084712-jabcun2gghurihksjh4he78qi91344rr.apps.googleusercontent.com.json";
-  private static final Collection<String> SCOPES
-          = asList("https://www.googleapis.com/auth/youtube.readonly");
+  private static final Collection<String> SCOPES = asList("https://www.googleapis.com/auth/youtube.readonly");
   private static final String APPLICATION_NAME = "Quickstart";
   private static final JsonFactory JSON_FACTORY = new JacksonFactory();
 
