@@ -23,5 +23,16 @@ It does the following:
    - User name
    - Channel ID
    - Number of subscribers
-   - Number of views 
+   - Number of views
+6. Lists the most watched YouTube channels per category for a given region—with the details:
+   - User name
+   - Channel ID
+   - Number of subscribers
+7. Lists the top `n` trending channels (while using `Chart = MostPopular`) for a given region—with the details:
+   - User name
+   - Channel ID
+   - Number of subscribers
+8. Lists live streaming info
+   - Lists live streaming channel for a given channel/user name.
+   - Lists live streaming channels for [top 100 news channels](https://hypeauditor.com/top-youtube-news-politics-united-states/) in the USA
 
