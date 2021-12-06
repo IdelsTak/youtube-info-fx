@@ -3,6 +3,7 @@
  */
 package com.github.idelstak.youtubeinfofx.api;
 
+import com.github.idelstak.youtubeinfofx.spi.VideoCategories;
 import com.github.idelstak.youtubeinfofx.spi.VideoCategory;
 import com.google.api.services.youtube.YouTube;
 import java.io.IOException;
@@ -12,26 +13,21 @@ import static java.util.stream.Collectors.toList;
  *
  * @author Hiram K. <https://github.com/IdelsTak>
  */
-public class YouTubeVideoCategories {
-
-  private final YouTube youTube;
+public class YouTubeVideoCategories extends VideoCategories {
 
   public YouTubeVideoCategories(YouTube youTube) {
-    this.youTube = youTube;
+    super(youTube);
   }
 
   public Iterable<VideoCategory> getVideoCategories() throws IOException {
-    return youTube.videoCategories()
+    return super.getService()
+            .videoCategories()
             .list("snippet")
             .setRegionCode("US")
             .execute()
             .getItems()
             .stream()
-            .map(this::toVideoCategory)
+            .map(super::toVideoCategory)
             .collect(toList());
-  }
-
-  private VideoCategory toVideoCategory(com.google.api.services.youtube.model.VideoCategory category) {
-    return new YouTubeVideoCategory(category.getId(), category.getSnippet().getTitle());
   }
 }
