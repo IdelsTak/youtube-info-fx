@@ -4,14 +4,16 @@ JavaFX application to extract information from YouTube API v3.
 
 It does the following:
 
+> Where, `n` is a number such as `25` or `30`
+
 1. Lists YouTube categories with the details: 
    - Category ID
    - Category Name
-2. Lists the most watched [n][] videos in a country—e.g., US, Canada, etc.—with the details:
+2. Lists the most watched `n` videos in a country—e.g., US, Canada, etc.—with the details:
    - Channel ID
    - Number of views
    - Date published
-3. Lists the most watched [n][] videos in a country under a given category, with the details:
+3. Lists the most watched `n` videos in a country under a given category, with the details:
    - Channel ID
    - Number of views
    - Date published
@@ -28,12 +30,10 @@ It does the following:
    - User name
    - Channel ID
    - Number of subscribers
-7. Lists the top [n][] trending channels (while using `Chart = MostPopular`) for a given region—with the details:
+7. Lists the top `n` trending channels (while using `Chart = MostPopular`) for a given region—with the details:
    - User name
    - Channel ID
    - Number of subscribers
 8. Lists live streaming info
    - Lists live streaming channel for a given channel/user name.
    - Lists live streaming channels for [top 100 news channels](https://hypeauditor.com/top-youtube-news-politics-united-states/) in the USA
-
-[n] : a figure, such as `25` or `50`
