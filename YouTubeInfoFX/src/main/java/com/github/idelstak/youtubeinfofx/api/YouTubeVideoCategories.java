@@ -21,6 +21,7 @@ public class YouTubeVideoCategories extends VideoCategories {
     super(gs);
   }
 
+  @Override
   public Iterable<VideoCategory> getVideoCategories() throws IOException {
     return super.getService()
             .videoCategories()
