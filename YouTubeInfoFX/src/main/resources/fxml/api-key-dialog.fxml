@@ -10,24 +10,20 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<DialogPane prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.idelstak.youtubeinfofx.ui.controllers.APIKeyDialogController">
-  <buttonTypes>
-    <ButtonType fx:constant="CANCEL" />
-    <ButtonType fx:constant="APPLY" />
-  </buttonTypes>
+<DialogPane fx:id="dlgPane" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.idelstak.youtubeinfofx.ui.controllers.APIKeyDialogController">
   <content>
     <VBox spacing="12.0">
       <children>
             <VBox spacing="6.0">
                <children>
-              <Label text="Project Name" />
-              <TextField />
+              <Label text="Application Name" />
+              <TextField fx:id="applicationNameTxtFld" />
                </children>
             </VBox>
             <VBox spacing="6.0">
                <children>
                   <Label text="API Key" />
-                  <TextField />
+                  <TextField fx:id="apiKeyTxtFld" />
                </children>
             </VBox>
       </children>
@@ -39,10 +35,10 @@
    <header>
       <VBox spacing="6.0">
          <children>
-            <Label style="-fx-text-fill: gray; -fx-font-size: 0.9em;" text="No project credentials were found. You'll need the project name and the API Key." wrapText="true" />
+            <Label style="-fx-text-fill: gray; -fx-font-size: 0.9em;" text="Please verify the application properties. You'll need the application name and a valid API key." wrapText="true" />
             <HBox>
                <children>
-                  <Label contentDisplay="RIGHT" graphicTextGap="0.0" prefHeight="24.0" style="-fx-text-fill: gray; -fx-font-size: 0.9em;" text="(Create these values at: " />
+                  <Label contentDisplay="RIGHT" graphicTextGap="0.0" prefHeight="24.0" style="-fx-text-fill: gray; -fx-font-size: 0.9em;" text="(Define these properties at: " />
                   <Hyperlink prefHeight="24.0" style="-fx-font-size: 0.9em;" text="Google Developers API Console">
                      <padding>
                         <Insets bottom="-1.0" left="-1.0" right="-1.0" top="-1.0" />
@@ -58,4 +54,8 @@
          </padding>
       </VBox>
    </header>
+   <buttonTypes>
+      <ButtonType fx:constant="FINISH" />
+      <ButtonType fx:constant="CANCEL" />
+   </buttonTypes>
 </DialogPane>
