@@ -3,11 +3,12 @@
  */
 package com.github.idelstak.youtubeinfofx.api;
 
-import com.github.idelstak.youtubeinfofx.api.credentials.Auth;
 import com.github.idelstak.youtubeinfofx.spi.VideoCategory;
 import java.io.IOException;
 import java.security.GeneralSecurityException;
 import org.junit.Test;
+
+import static com.github.idelstak.youtubeinfofx.api.service.GoogleService.Client.YOUTUBE;
 
 /**
  *
@@ -20,8 +21,7 @@ public class YouTubeVideoCategoriesTest {
 
   @Test
   public void shouldListCategories() throws GeneralSecurityException, IOException {
-    YouTubeVideoCategories categories = new YouTubeVideoCategories(Auth.getService());
-
+    YouTubeVideoCategories categories = new YouTubeVideoCategories(YOUTUBE);
     Iterable<VideoCategory> videoCategories = categories.getVideoCategories();
 
     for (VideoCategory videoCategory : videoCategories) {
