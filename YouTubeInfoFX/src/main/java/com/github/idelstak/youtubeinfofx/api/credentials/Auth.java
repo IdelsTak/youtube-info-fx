@@ -47,15 +47,16 @@ public class Auth {
     // Build flow and trigger user authorization request.
     AuthorizationCodeFlow flow = new GoogleAuthorizationCodeFlow.Builder(httpTransport, JSON_FACTORY, (GoogleClientSecrets) json, SCOPES).build();
     LocalServerReceiver receiver = new LocalServerReceiver();
-    AuthorizationCodeInstalledApp installedApp = new AuthorizationCodeInstalledApp(flow, receiver);
-    Credential credential = installedApp.authorize("user");
+    AuthorizationCodeInstalledApp app = new AuthorizationCodeInstalledApp(flow, receiver);
+    Credential credential = app.authorize("user");
+
     return credential;
   }
 
   public static YouTube getService() throws GeneralSecurityException, IOException {
-    HttpTransport httpTransport = newTrustedTransport();
-    HttpRequestInitializer initializer = authorize(httpTransport);
-    Builder builder = new Builder(httpTransport, JSON_FACTORY, initializer);
+    HttpTransport transport = newTrustedTransport();
+    HttpRequestInitializer initializer = authorize(transport);
+    Builder builder = new Builder(transport, JSON_FACTORY, initializer);
 
     return builder.setApplicationName(APPLICATION_NAME).build();
   }
