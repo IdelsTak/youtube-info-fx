@@ -35,8 +35,8 @@ public abstract class VideoCategories {
     }
   }
 
-  public VideoCategory toVideoCategory(com.google.api.services.youtube.model.VideoCategory category) {
-    return new YouTubeVideoCategory(category.getId(), category.getSnippet().getTitle());
+  public VideoCategory toVideoCategory(com.google.api.services.youtube.model.VideoCategory vc) {
+    return new YouTubeVideoCategory(vc.getId(), vc.getSnippet().getTitle());
   }
 
 }
