@@ -3,6 +3,8 @@
  */
 package com.github.idelstak.youtubeinfofx.ui.controllers;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.fxml.FXML;
 
 /**
@@ -11,8 +13,10 @@ import javafx.fxml.FXML;
  */
 public class APIKeyDialogController {
 
+  private static final Logger LOG = Logger.getLogger(APIKeyDialogController.class.getName());
+
   @FXML
   void initialize() {
-
+    LOG.log(Level.INFO, "initialize...");
   }
 }
