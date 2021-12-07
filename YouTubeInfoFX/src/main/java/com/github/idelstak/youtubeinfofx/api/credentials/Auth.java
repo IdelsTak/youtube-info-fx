@@ -9,19 +9,24 @@ import com.google.api.client.extensions.java6.auth.oauth2.AuthorizationCodeInsta
 import com.google.api.client.extensions.jetty.auth.oauth2.LocalServerReceiver;
 import com.google.api.client.googleapis.auth.oauth2.GoogleAuthorizationCodeFlow;
 import com.google.api.client.googleapis.auth.oauth2.GoogleClientSecrets;
+
 import static com.google.api.client.googleapis.auth.oauth2.GoogleClientSecrets.load;
 import static com.google.api.client.googleapis.javanet.GoogleNetHttpTransport.newTrustedTransport;
+
 import com.google.api.client.http.HttpRequestInitializer;
 import com.google.api.client.http.HttpTransport;
 import com.google.api.client.json.GenericJson;
 import com.google.api.client.json.JsonFactory;
 import com.google.api.client.json.jackson2.JacksonFactory;
 import com.google.api.services.youtube.YouTube;
+import com.google.api.services.youtube.YouTube.Builder;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.security.GeneralSecurityException;
+
 import static java.util.Arrays.asList;
+
 import java.util.Collection;
 
 /**
@@ -50,7 +55,7 @@ public class Auth {
   public static YouTube getService() throws GeneralSecurityException, IOException {
     HttpTransport httpTransport = newTrustedTransport();
     HttpRequestInitializer initializer = authorize(httpTransport);
-    YouTube.Builder builder = new YouTube.Builder(httpTransport, JSON_FACTORY, initializer);
+    Builder builder = new Builder(httpTransport, JSON_FACTORY, initializer);
 
     return builder.setApplicationName(APPLICATION_NAME).build();
   }
